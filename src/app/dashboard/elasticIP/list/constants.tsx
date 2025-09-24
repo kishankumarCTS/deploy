@@ -1,0 +1,32 @@
+export const ROWS = [
+  {
+    id: 1,
+    ipAddress: "45.194.2.66",
+    mappedIpAddress: "",
+    attachedTo: "",
+    status: "Down",
+    pool: "EXT-NOI",
+    createdAt: "11-09-2025 11:44",
+    description: "test",
+  },
+  {
+    id: 2,
+    ipAddress: "45.194.2.66",
+    mappedIpAddress: "",
+    attachedTo: "",
+    status: "Down",
+    pool: "EXT-NOI",
+    createdAt: "11-09-2025 11:44",
+    description: "test",
+  },
+  {
+    id: 3,
+    ipAddress: "45.194.2.66",
+    mappedIpAddress: "",
+    attachedTo: "",
+    status: "Down",
+    pool: "EXT-NOI",
+    createdAt: "11-09-2025 11:44",
+    description: "test",
+  },
+];

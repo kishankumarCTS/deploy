@@ -1,0 +1,193 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-themeBlue-50: var(--color-themeBlue-50);
+  --color-themeBlue-100: var(--color-themeBlue-100);
+  --color-themeBlue-200: var(--color-themeBlue-200);
+  --color-themeBlue-300: var(--color-themeBlue-300);
+  --color-themeBlue-400: var(--color-themeBlue-400);
+  --color-themeBlue-500: var(--color-themeBlue-500);
+  --color-themeBlue-600: var(--color-themeBlue-600);
+  --color-themeBlue-700: var(--color-themeBlue-700);
+  --color-themeBlue-800: var(--color-themeBlue-800);
+  --color-themeBlue-900: var(--color-themeBlue-900);
+  --color-primary: var(--color-themeBlue-700);
+
+  --color-themeWhite-900: var(--color-themeWhite-900);
+
+  --color-themeSlate-500: var(--color-themeSlate-500);
+  --color-themeSlate-600: var(--color-themeSlate-600);
+
+  --color-themeBlack-10: var(--color-themeBlack-10);
+  --color-themeBlack-20: var(--color-themeBlack-20);
+  --color-themeBlack-30: var(--color-themeBlack-30);
+  --color-themeBlack-40: var(--color-themeBlack-40);
+  --color-themeBlack-50: var(--color-themeBlack-50);
+  --color-themeBlack-60: var(--color-themeBlack-60);
+  --color-themeBlack-70: var(--color-themeBlack-70);
+  --color-themeBlack-80: var(--color-themeBlack-80);
+  --color-themeBlack-90: var(--color-themeBlack-90);
+  --color-themeBlack-100: var(--color-themeBlack-100);
+
+  --color-themeSlate-600: var(--color-themeSlate-600);
+
+  --color-themeGray-50: var(--color-themeGray-50);
+  --color-themeGray-100: var(--color-themeGray-100);
+  --color-themeGray-200: var(--color-themeGray-200);
+  --color-themeGray-300: var(--color-themeGray-300);
+  --color-themeGray-400: var(--color-themeGray-400);
+  --color-themeGray-500: var(--color-themeGray-500);
+  --color-themeGray-600: var(--color-themeGray-600);
+  --color-themeGray-900: var(--color-themeGray-900);
+
+  --color-yellow: var(--color-yellow);
+
+  --color-success: var(--color-success);
+  --color-error: var(--color-error);
+
+  --color-status-running: var(--status-running);
+  --color-status-pending: var(--status-pending);
+  --color-status-shutdown: var(--status-shutdown);
+  --color-status-deleted: var(--status-deleted);
+  --color-status-error: var(--status-error);
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+
+  --color-overlay-background: var(--color-overlay-background);
+}
+
+:root {
+  --color-themeBlue-50: #f5f9ff;
+  --color-themeBlue-100: #dbeafe;
+  --color-themeBlue-200: #bfdbfe;
+  --color-themeBlue-300: #93c5fd;
+  --color-themeBlue-400: #60a5fa;
+  --color-themeBlue-500: #3b82f6;
+  --color-themeBlue-600: #2563eb;
+  --color-themeBlue-700: #1d4ed8;
+  --color-themeBlue-800: #1e40af;
+  --color-themeBlue-900: #1e3a8a;
+
+  --color-themeWhite-900: #ffffff;
+
+  --color-themeBlack-10: #0000001a;
+  --color-themeBlack-20: #00000033;
+  --color-themeBlack-30: #0000004d;
+  --color-themeBlack-40: #00000066;
+  --color-themeBlack-50: #00000080;
+  --color-themeBlack-60: #00000099;
+  --color-themeBlack-70: #000000b2;
+  --color-themeBlack-80: #000000cc;
+  --color-themeBlack-90: #000000e5;
+  --color-themeBlack-100: #000000;
+
+  --color-themeGray-50: #fafafa;
+  --color-themeGray-100: #f3f4f6;
+  --color-themeGray-200: #e9eaeb;
+  --color-themeGray-400: #ced4da;
+  --color-themeGray-300: #dee2e6;
+  --color-themeGray-500: #717680;
+  --color-themeGray-600: #535862;
+  --color-themeGray-900: #181d27;
+
+  --color-themeSlate-500: #64748b;
+  --color-themeSlate-600: 475569;
+
+  --color-yellow: #fef9c3;
+
+  --color-success: #9bf5a7;
+  --color-error: #bd0000;
+
+  --status-running: #beffc6;
+  --status-pending: #f9fcff;
+  --status-shutdown: #fff7d0;
+  --status-deleted: #d9d9d9;
+  --status-error: #ffd5d5;
+
+  --sidebar: hsl(0 0% 98%);
+  --sidebar-foreground: hsl(240 5.3% 26.1%);
+  --sidebar-primary: hsl(240 5.9% 10%);
+  --sidebar-primary-foreground: hsl(0 0% 98%);
+  --sidebar-accent: hsl(240 4.8% 95.9%);
+  --sidebar-accent-foreground: hsl(240 5.9% 10%);
+  --sidebar-border: hsl(220 13% 91%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+
+  --color-overlay-background: #464646;
+}
+
+@layer components {
+  .display-large {
+    @apply text-[57px] leading-[64px];
+  }
+
+  .display-medium {
+    @apply text-[45px] leading-[52px];
+  }
+
+  .display-small {
+    @apply text-[36px] leading-[44px];
+  }
+
+  .headline-large {
+    @apply text-[32px] leading-[40px];
+  }
+
+  .headline-medium {
+    @apply text-[28px] leading-[36px];
+  }
+
+  .headline-small {
+    @apply text-[24px] leading-[32px];
+  }
+
+  .title-large {
+    @apply text-[22px] leading-[28px];
+  }
+
+  .title-medium {
+    @apply text-[16px] leading-[24px];
+  }
+
+  .title-small {
+    @apply text-[14px] leading-[20px];
+  }
+
+  .label-large {
+    @apply text-[14px] leading-[20px];
+  }
+
+  .label-medium {
+    @apply text-[12px] leading-[16px];
+  }
+
+  .label-small {
+    @apply text-[11px] leading-[16px];
+  }
+
+  .body-large {
+    @apply text-[16px] leading-[24px];
+  }
+
+  .body-medium {
+    @apply text-[14px] leading-[20px];
+  }
+
+  .body-small {
+    @apply text-[12px] leading-[16px];
+  }
+}
+
+body {
+  @apply text-[14px] bg-themeBlue-100 tracking-normal;
+}
