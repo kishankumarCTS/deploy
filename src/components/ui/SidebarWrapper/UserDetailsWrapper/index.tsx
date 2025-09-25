@@ -30,6 +30,7 @@ const UserDetailsWrapper = ({ collapsed = false }: { collapsed: boolean }) => {
           { id: 2, label: "Bengaluru" },
           { id: 3, label: "Mumbai" },
         ]}
+        value=""
       />
       <div className="title-small text-[#0E1726]">Project ID</div>
       <SelectOptions
@@ -38,6 +39,7 @@ const UserDetailsWrapper = ({ collapsed = false }: { collapsed: boolean }) => {
           { id: 2, label: "4892219289ne29022" },
           { id: 3, label: "4892219289ne29023" },
         ]}
+        value=""
       />
     </div>
   );
