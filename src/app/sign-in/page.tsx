@@ -8,12 +8,14 @@ import Logo from "@/assets/icons/logo.svg";
 import LoginForm from "@/components/pages/Login/Login Form";
 import LoginBanner from "@/assets/svg/Login Banner.svg";
 import TwoFactorAuthentication from "@/components/pages/Login/2FA";
+import { useRouter } from "next/navigation";
 
 function Login() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [step, setStep] = useState<number>(1);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const router = useRouter();
 
   const handleCheckEmail = () => {
     //on success
@@ -55,6 +57,7 @@ function Login() {
           <TwoFactorAuthentication
             handleResend={() => {}}
             isLoading={isLoading}
+            onSubmit={() => router.push("/dashboard/overview")}
           />
         )}
       </div>
