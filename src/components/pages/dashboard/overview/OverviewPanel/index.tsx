@@ -1,22 +1,11 @@
 "use client";
-
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  Tooltip,
-  Dot,
-  ReferenceLine,
-  TooltipProps,
-} from "recharts";
-// Import types and constants
+import dynamic from "next/dynamic";
+
 import {
   DataPoint,
   TooltipData,
-  CustomDotProps,
   ChartMouseEvent,
 } from "./types";
 import {
@@ -29,12 +18,26 @@ import {
   INSTANCE_OPTIONS,
 } from "./constants";
 
+const DynamicChart = dynamic(() => import('./ChartComponent'), {
+  ssr: false,
+  loading: () => (
+    <div 
+      className="flex items-center justify-center"
+      style={{ 
+        width: CHART_CONFIG.width, 
+        height: CHART_CONFIG.height 
+      }}
+    >
+      <div className="text-gray-500">Loading chart...</div>
+    </div>
+  )
+});
+
 export default function OverviewPanel() {
   const [activePoint, setActivePoint] = useState<string>(DEFAULT_ACTIVE_POINT);
   const [tooltipData, setTooltipData] = useState<TooltipData | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedInstance, setSelectedInstance] = useState(INSTANCE_OPTIONS[0]);
-
   useEffect(() => {
     const defaultData = CHART_DATA.find((d) => d.date === DEFAULT_ACTIVE_POINT);
     if (defaultData) {
@@ -65,73 +68,31 @@ export default function OverviewPanel() {
     setIsDropdownOpen(false);
   };
 
-  // const CustomTooltip = ({
-  //   active,
-  //   payload,
-  // }: {
-  //   active?: boolean;
-  //   payload?: Array<{ payload: DataPoint }>;
-  // }) => {
-  //   if (active && payload && payload.length) {
-  //     const current = payload[0].payload as DataPoint;
-  //     return (
-  //       <div className="bg-slate-700 text-white p-3 rounded-lg shadow-lg border-0">
-  //         <p className="text-xs text-gray-300 mb-1">{current.fullDate}</p>
-  //         <p className="text-[14.77px] font-medium mb-2 leading-[25.32px]">
-  //           $ {current.value}
-  //         </p>
-  //         <div className="flex items-center gap-1 mb-1">
-  //           <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-  //           <span className="text-xs text-gray-300">Last Period</span>
-  //         </div>
-  //         <p className="text-sm font-normal">$ {current.lastPeriod}</p>
-  //       </div>
-  //     );
-  //   }
-  //   return null;
-  // };
-
-  // const CustomMainDot = ({ cx, cy, payload }: CustomDotProps) => {
-  //   if (typeof cx !== "number" || typeof cy !== "number" || !payload) {
-  //     return null;
-  //   }
-
-  //   const isActive = payload.date === activePoint;
-  //   if (isActive) {
-  //     return (
-  //       <Dot
-  //         cx={cx}
-  //         cy={cy}
-  //         r={5}
-  //         fill={COLORS.primary}
-  //         stroke={COLORS.white}
-  //         strokeWidth={2}
-  //       />
-  //     );
-  //   }
-  //   return <Dot cx={cx} cy={cy} r={3} fill={COLORS.primary} />;
-  // };
-
-  // const CustomGreyDot = ({ cx, cy, payload }: CustomDotProps) => {
-  //   if (typeof cx !== "number" || typeof cy !== "number" || !payload) {
-  //     return null;
-  //   }
-
-  //   const isActive = payload.date === activePoint;
-  //   if (isActive) {
-  //     return (
-  //       <Dot
-  //         cx={cx}
-  //         cy={cy}
-  //         r={4}
-  //         fill={COLORS.secondary}
-  //         stroke={COLORS.white}
-  //         strokeWidth={2}
-  //       />
-  //     );
-  //   }
-  //   return <Dot cx={cx} cy={cy} r={3} fill={COLORS.secondary} />;
-  // };
+  const CustomTooltip = ({
+    active,
+    payload,
+  }: {
+    active?: boolean;
+    payload?: Array<{ payload: DataPoint }>;
+  }) => {
+    if (active && payload && payload.length) {
+      const current = payload[0].payload as DataPoint;
+      return (
+        <div className="bg-slate-700 text-white p-3 rounded-lg shadow-lg border-0">
+          <p className="text-xs text-gray-300 mb-1">{current.fullDate}</p>
+          <p className="text-[14.77px] font-medium mb-2 leading-[25.32px]">
+            $ {current.value}
+          </p>
+          <div className="flex items-center gap-1 mb-1">
+            <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+            <span className="text-xs text-gray-300">Last Period</span>
+          </div>
+          <p className="text-sm font-normal">$ {current.lastPeriod}</p>
+        </div>
+      );
+    }
+    return null;
+  };
 
   return (
     <div className="flex gap-6">
@@ -302,56 +263,14 @@ export default function OverviewPanel() {
               </div>
             ))}
           </div>
-          {/* <div className="bg-white rounded-xl p-4 relative">
-            <LineChart
+          <div className="bg-white rounded-xl p-4 relative">
+            <DynamicChart
               data={CHART_DATA}
-              width={CHART_CONFIG.width}
-              height={CHART_CONFIG.height}
+              activePoint={activePoint}
               onMouseMove={handleMouseMove}
-            >
-              <XAxis
-                dataKey="date"
-                tick={{ fontSize: 11, fill: COLORS.gray[500] }}
-                axisLine={false}
-                tickLine={false}
-              />
-              <YAxis
-                tick={{ fontSize: 10, fill: COLORS.gray[500] }}
-                domain={CHART_CONFIG.yAxisDomain}
-                axisLine={false}
-                tickLine={false}
-              />
-              <Tooltip content={<CustomTooltip />} />
-
-              <ReferenceLine
-                x={activePoint}
-                stroke="#94A3B8"
-                strokeDasharray="4 4"
-                strokeWidth={1}
-              />
-
-              <Line
-                type="linear"
-                dataKey="value"
-                stroke={CHART_CONFIG.mainLineColor}
-                strokeWidth={CHART_CONFIG.mainLineStrokeWidth}
-                dot={<CustomMainDot />}
-                activeDot={{
-                  r: 6,
-                  fill: CHART_CONFIG.mainLineColor,
-                  stroke: COLORS.white,
-                  strokeWidth: 2,
-                }}
-              />
-              <Line
-                type="linear"
-                dataKey="compare"
-                stroke={CHART_CONFIG.compareLineColor}
-                strokeWidth={CHART_CONFIG.compareLineStrokeWidth}
-                dot={<CustomGreyDot />}
-              />
-            </LineChart>
-          </div> */}
+              CustomTooltip={CustomTooltip}
+            />
+          </div>
           <div className="mt-4 bg-white rounded-xl overflow-hidden">
             {Array.from({ length: 7 }).map((_, i) => (
               <div
