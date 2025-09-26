@@ -21,7 +21,7 @@ const KeyPairList = () => {
   const [searchValue, setSearchValue] = useState("");
   const [selectedRows, setSelectedRows] = useState<string[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+
   const filteredKeyPairs = keyPairData.filter(
     (kp) =>
       kp.name.toLowerCase().includes(searchValue.toLowerCase()) ||
@@ -44,7 +44,7 @@ const KeyPairList = () => {
       </span>
     ),
   }));
-const handleSelectAll = () => {
+  const handleSelectAll = () => {
     if (selectedRows.length === rows.length) {
       setSelectedRows([]);
       setColumns(COLUMNS);
@@ -107,12 +107,8 @@ const handleSelectAll = () => {
     }
   };
 
-  
-
   const handleViewDetails = (id: string) =>
-    router.push(
-      `${process.env.NEXT_PUBLIC_BASEURL}dashboard/KeyPairDL/details/${id}`
-    );
+    router.push(`/dashboard/KeyPairDL/details/${id}`);
 
   const handleCreateKeyPair = (newKeyPair: {
     name: string;
@@ -152,7 +148,9 @@ const handleSelectAll = () => {
               ...col,
               header: (
                 <Checkbox
-                  checked={selectedRows.length === rows.length && rows.length > 0}
+                  checked={
+                    selectedRows.length === rows.length && rows.length > 0
+                  }
                   onChange={handleSelectAll}
                 />
               ),
@@ -168,7 +166,7 @@ const handleSelectAll = () => {
         <h1 className="text-[32px] leading-[21px] font-medium">Key Pairs</h1>
         <Button onClick={() => setIsModalOpen(true)}>Create Key Pair</Button>
       </div>
-      
+
       <div className="py-6 px-3 bg-[#EEF5FE] rounded-[20px]">
         <div className="flex justify-between items-center gap-3 mb-6">
           <SearchBar
@@ -188,7 +186,7 @@ const handleSelectAll = () => {
             <RefreshButton onClick={() => {}} />
           </div>
         </div>
-        
+
         <Table
           columns={columns}
           rows={rows}
@@ -214,7 +212,7 @@ const handleSelectAll = () => {
           className="max-h-[852px] rounded-b-none"
           tableClasses="rounded-b-none"
         />
-        
+
         <div className="bg-themeWhite-900 py-3 px-6 rounded-b-[20px]">
           <Pagination
             page={1}

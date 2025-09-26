@@ -120,7 +120,7 @@ const BucketList = () => {
   };
 
   const handleViewDetails = (id: string) => {
-    router.push(`${process.env.NEXT_PUBLIC_BASEURL}dashboard/s3-storage/buckets/${id}`);
+    router.push(`/dashboard/s3-storage/buckets/${id}`);
   };
 
   useEffect(() => {

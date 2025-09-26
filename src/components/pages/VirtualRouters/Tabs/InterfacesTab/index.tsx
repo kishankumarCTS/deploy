@@ -153,9 +153,7 @@ function InterfacesTab() {
   };
 
   const handleInterfaceDetails = (interfaceId: string) => {
-    router.push(
-      `${process.env.NEXT_PUBLIC_BASEURL}dashboard/interface/details/${interfaceId}`
-    );
+    router.push(`/dashboard/interface/details/${interfaceId}`);
   };
   return (
     <div>

@@ -24,9 +24,9 @@ const ListenerDetails = ({ listenerId }: ListenerDetailsProps) => {
   const [isCreatePolicyModalOpen, setIsCreatePolicyModalOpen] = useState(false);
   const router = useRouter();
 
-const handleViewPolicyDetails = (policyId: string) => {
-  router.push(`${process.env.NEXT_PUBLIC_BASEURL}dashboard/l7policy/details/${policyId}`);
-};
+  const handleViewPolicyDetails = (policyId: string) => {
+    router.push(`/dashboard/l7policy/details/${policyId}`);
+  };
 
   const handlePolicySubmit = (data: {
     name: string;
@@ -38,7 +38,6 @@ const handleViewPolicyDetails = (policyId: string) => {
     listenerId?: string | null;
   }) => {
     console.log("New L7 Policy Created:", data);
-    
   };
 
   const listenerDetails = getListenerDetails(listenerId);
@@ -137,7 +136,7 @@ const handleViewPolicyDetails = (policyId: string) => {
 
   const policyRows = listenerPoliciesData.map((policy) => ({
     ...policy,
-     id:policy.policyId,
+    id: policy.policyId,
     select: (
       <Checkbox
         checked={selectedPolicies.includes(policy.id)}
@@ -232,8 +231,10 @@ const handleViewPolicyDetails = (policyId: string) => {
       <div className="flex items-center justify-between mb-6">
         <SearchBar placeholder="Search by keyword" />
         <div className="flex items-center gap-3">
-          <Button classNames="flex items-center justify-center gap-2 bg-red-600 text-white rounded-[40px] px-6 h-9" onClick={() => setIsCreatePolicyModalOpen(true)}
->
+          <Button
+            classNames="flex items-center justify-center gap-2 bg-red-600 text-white rounded-[40px] px-6 h-9"
+            onClick={() => setIsCreatePolicyModalOpen(true)}
+          >
             CREATE L7 POLICY
           </Button>
           <div className="relative">
@@ -260,9 +261,9 @@ const handleViewPolicyDetails = (policyId: string) => {
             { children: "Delete Policy", onClick: () => {} },
           ]}
           mainAction={{
-      children: "View Policy Details",
-      onClick: (policyId: string) => handleViewPolicyDetails(policyId),
-    }}
+            children: "View Policy Details",
+            onClick: (policyId: string) => handleViewPolicyDetails(policyId),
+          }}
         />
         <div className="bg-themeWhite-900 py-3 px-6 rounded-b-[20px]">
           <Pagination

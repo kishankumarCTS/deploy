@@ -46,9 +46,7 @@ const VPCList = () => {
     try {
       const vpc = filteredVPCs.find((v) => v.id === vpcId);
       if (vpc) {
-        router.push(
-          `${process.env.NEXT_PUBLIC_BASEURL}dashboard/vpc/details/${vpc.vpcId}`
-        );
+        router.push(`/dashboard/vpc/details/${vpc.vpcId}`);
       }
     } catch (error) {
       console.log("View button clicked with ID:", vpcId, error);

@@ -136,9 +136,7 @@ function VirtualRoutersListing() {
   };
 
   const handleDetailsNavigation = (id: string) => {
-    push(
-      `${process.env.NEXT_PUBLIC_BASEURL}dashboard/virtual-routers/details/${id}`
-    );
+    push(`/dashboard/virtual-routers/details/${id}`);
   };
 
   const handleCreateRouter = (data: {

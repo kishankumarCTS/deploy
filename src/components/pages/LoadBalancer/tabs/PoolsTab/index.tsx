@@ -25,9 +25,7 @@ function PoolsTab() {
   const [selectedRows, setSelectedRows] = useState<any>([]);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false); // Add modal state
   const handlePoolDetails = (poolId: string) => {
-    router.push(
-      `${process.env.NEXT_PUBLIC_BASEURL}dashboard/pool/details/${poolId}`
-    );
+    router.push(`/dashboard/pool/details/${poolId}`);
   };
   const rows = ROWS.map((row: any) => ({
     ...row,

@@ -184,7 +184,7 @@ function AlertsListing() {
   };
 
   const handleDetailsNavigation = (id: string) => {
-    push(`${process.env.NEXT_PUBLIC_BASEURL}dashboard/alerts/details/${id}`);
+    push(`/dashboard/alerts/details/${id}`);
   };
 
   useEffect(() => {

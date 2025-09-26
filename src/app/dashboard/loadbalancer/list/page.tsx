@@ -182,9 +182,7 @@ function LoadBalancerListing() {
   };
 
   const handleDetailsNavigation = (id: string) => {
-    push(
-      `${process.env.NEXT_PUBLIC_BASEURL}dashboard/loadbalancer/details/${id}`
-    );
+    push(`/dashboard/loadbalancer/details/${id}`);
   };
 
   useEffect(() => {

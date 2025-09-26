@@ -34,7 +34,7 @@ const BucketDetails = ({ bucketId }: BucketDetailsProps) => {
 
     if (obj.type === "folder") {
       router.push(
-        `${process.env.NEXT_PUBLIC_BASEURL}dashboard/s3-storage/buckets/${bucketId}/folders/${obj.id}`
+        `/dashboard/s3-storage/buckets/${bucketId}/folders/${obj.id}`
       );
     } else {
       console.log("File clicked:", obj.name);

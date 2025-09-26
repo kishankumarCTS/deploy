@@ -32,15 +32,12 @@ const VPCDetails = ({ vpcId }: VPCDetailsProps) => {
   const [isCreateSubnetOpen, setIsCreateSubnetOpen] = useState(false);
 
   const handleSubnetDetails = (subnetId: string) => {
-  router.push(
-    `${process.env.NEXT_PUBLIC_BASEURL}dashboard/subnet/details/${subnetId}`
-  );
-};
+    router.push(`/dashboard/subnet/details/${subnetId}`);
+  };
 
-const handlePortDetails = (portId: string) => {
-  router.push(`${process.env.NEXT_PUBLIC_BASEURL}dashboard/ports/details/${portId}`);
-};
-
+  const handlePortDetails = (portId: string) => {
+    router.push(`/dashboard/ports/details/${portId}`);
+  };
 
   const handleCreatePort = (portData: {
     name: string;
@@ -61,9 +58,8 @@ const handlePortDetails = (portId: string) => {
   };
 
   const handleCreateSubnet = () => {
-  console.log("New Subnet Created:");
- 
-};
+    console.log("New Subnet Created:");
+  };
 
   const filteredSubnets = subnetsData.filter(
     (subnet) =>
@@ -184,19 +180,18 @@ const handlePortDetails = (portId: string) => {
     },
   ];
 
- const subnetRows = filteredSubnets.map((subnet) => ({
-  ...subnet,
-  id: subnet.subnetId, // 👈 important: ensures Table passes subnetId, not the local "id"
-  select: (
-    <Checkbox
-      checked={selectedSubnets.includes(subnet.id)}
-      onChange={() =>
-        handleToggle(subnet.id, selectedSubnets, setSelectedSubnets)
-      }
-    />
-  ),
-}));
-
+  const subnetRows = filteredSubnets.map((subnet) => ({
+    ...subnet,
+    id: subnet.subnetId, // 👈 important: ensures Table passes subnetId, not the local "id"
+    select: (
+      <Checkbox
+        checked={selectedSubnets.includes(subnet.id)}
+        onChange={() =>
+          handleToggle(subnet.id, selectedSubnets, setSelectedSubnets)
+        }
+      />
+    ),
+  }));
 
   const portColumns: Column<PortType & { select: React.ReactNode }>[] = [
     {
@@ -372,10 +367,9 @@ const handlePortDetails = (portId: string) => {
             { children: "Delete Subnet", onClick: () => {} },
           ]}
           mainAction={{
-    children: "View Subnet Details",
-    onClick: (subnetId: string) => handleSubnetDetails(subnetId), // ✅ this id comes from row.id in Table
-  }}
-
+            children: "View Subnet Details",
+            onClick: (subnetId: string) => handleSubnetDetails(subnetId), // ✅ this id comes from row.id in Table
+          }}
         />
         <div className="bg-themeWhite-900 py-3 px-6 rounded-b-[20px]">
           <Pagination
@@ -393,11 +387,10 @@ const handlePortDetails = (portId: string) => {
         </div>
       </div>
       <CreateSubnetModal
-  isOpen={isCreateSubnetOpen}
-  onClose={() => setIsCreateSubnetOpen(false)}
-  onCreate={handleCreateSubnet}
-/>
-
+        isOpen={isCreateSubnetOpen}
+        onClose={() => setIsCreateSubnetOpen(false)}
+        onCreate={handleCreateSubnet}
+      />
     </div>
   );
 
@@ -432,9 +425,9 @@ const handlePortDetails = (portId: string) => {
             { children: "Delete Port", onClick: () => {} },
           ]}
           mainAction={{
-    children: "View Port Details",
-    onClick: (portId: string) => handlePortDetails(portId),
-  }}
+            children: "View Port Details",
+            onClick: (portId: string) => handlePortDetails(portId),
+          }}
         />
         <div className="bg-themeWhite-900 py-3 px-6 rounded-b-[20px]">
           <Pagination

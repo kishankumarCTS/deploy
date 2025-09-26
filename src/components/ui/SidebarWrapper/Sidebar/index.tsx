@@ -16,7 +16,7 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed }) => {
     {
       id: 1,
       option: "My Account",
-      url: `${process.env.NEXT_PUBLIC_BASEURL}dashboard/overview`,
+      url: `/dashboard/overview`,
       isDropdown: true,
       iconSrc: observabilityIcon,
       isActive: false,
@@ -45,8 +45,16 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed }) => {
       iconSrc: observabilityIcon,
       isActive: true,
       subOptions: [
-        { id: 1, title: "Create A New Compute Instance", url: `${process.env.NEXT_PUBLIC_BASEURL}dashboard/instance` },
-        { id: 2, title: "All Compute Instances", url: `${process.env.NEXT_PUBLIC_BASEURL}dashboard/instances/list` },
+        {
+          id: 1,
+          title: "Create A New Compute Instance",
+          url: `/dashboard/instance`,
+        },
+        {
+          id: 2,
+          title: "All Compute Instances",
+          url: `/dashboard/instances/list`,
+        },
       ],
     },
     {
@@ -57,11 +65,19 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed }) => {
       iconSrc: observabilityIcon,
       isActive: true,
       subOptions: [
-        { id: 1, title: "VPC Networks", url: `${process.env.NEXT_PUBLIC_BASEURL}dashboard/vpc/list` },
-        { id: 2, title: "Security Groups", url: `${process.env.NEXT_PUBLIC_BASEURL}dashboard/securitygroup/list` },
-        { id: 3, title: "Virtual Routers", url: `${process.env.NEXT_PUBLIC_BASEURL}dashboard/virtual-routers/list` },
-        { id: 4, title: "Elastic IP", url: `${process.env.NEXT_PUBLIC_BASEURL}dashboard/elasticIP/list` },
-        { id: 5, title: "Load Balancer", url: `${process.env.NEXT_PUBLIC_BASEURL}dashboard/loadbalancer/list` },
+        { id: 1, title: "VPC Networks", url: `/dashboard/vpc/list` },
+        {
+          id: 2,
+          title: "Security Groups",
+          url: `/dashboard/securitygroup/list`,
+        },
+        {
+          id: 3,
+          title: "Virtual Routers",
+          url: `/dashboard/virtual-routers/list`,
+        },
+        { id: 4, title: "Elastic IP", url: `/dashboard/elasticIP/list` },
+        { id: 5, title: "Load Balancer", url: `/dashboard/loadbalancer/list` },
       ],
     },
     {
@@ -72,8 +88,8 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed }) => {
       iconSrc: observabilityIcon,
       isActive: true,
       subOptions: [
-        { id: 1, title: "Volumes", url: `${process.env.NEXT_PUBLIC_BASEURL}dashboard/volumes/list` },
-        { id: 2, title: "S3 Storage", url: `${process.env.NEXT_PUBLIC_BASEURL}dashboard/s3-storage/getstarted`},
+        { id: 1, title: "Volumes", url: `/dashboard/volumes/list` },
+        { id: 2, title: "S3 Storage", url: `/dashboard/s3-storage/getstarted` },
       ],
     },
     {

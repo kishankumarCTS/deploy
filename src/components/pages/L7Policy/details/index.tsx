@@ -30,9 +30,7 @@ const L7PolicyDetails = ({ policyId }: L7PolicyDetailsProps) => {
   const policyDetails = getL7PolicyDetails(policyId);
   const l7RulesData = getL7RulesForPolicy(policyId);
   const handleViewRuleDetails = (ruleId: string) => {
-    router.push(
-      `${process.env.NEXT_PUBLIC_BASEURL}dashboard/l7rule/details/${ruleId}`
-    );
+    router.push(`/dashboard/l7rule/details/${ruleId}`);
   };
   if (!policyDetails) {
     return <div className="p-6">Policy not found</div>;
@@ -137,7 +135,7 @@ const L7PolicyDetails = ({ policyId }: L7PolicyDetailsProps) => {
 
   const ruleRows = l7RulesData.map((rule) => ({
     ...rule,
-    id:rule.ruleId,
+    id: rule.ruleId,
     select: (
       <Checkbox
         checked={selectedRules.includes(rule.id)}

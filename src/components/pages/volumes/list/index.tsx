@@ -19,8 +19,9 @@ const VolumeList = () => {
   const router = useRouter();
   const [searchValue, setSearchValue] = useState("");
   const [selectedRows, setSelectedRows] = useState<string[]>([]);
-  const [isCreateVolumeModalOpen, setIsCreateVolumeModalOpen] = useState<boolean>(false);
-  
+  const [isCreateVolumeModalOpen, setIsCreateVolumeModalOpen] =
+    useState<boolean>(false);
+
   const filteredVolumes = volumeData.filter(
     (volume) =>
       volume.name.toLowerCase().includes(searchValue.toLowerCase()) ||
@@ -47,9 +48,7 @@ const VolumeList = () => {
     try {
       const volume = filteredVolumes.find((vol) => vol.id === volumeId);
       if (volume) {
-        router.push(
-          `${process.env.NEXT_PUBLIC_BASEURL}dashboard/volumes/details/${volume.volumeId}`
-        );
+        router.push(`/dashboard/volumes/details/${volume.volumeId}`);
       }
     } catch (error) {
       console.log("View button clicked with ID:", volumeId);

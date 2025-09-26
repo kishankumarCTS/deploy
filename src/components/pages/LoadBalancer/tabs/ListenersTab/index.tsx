@@ -20,9 +20,7 @@ function ListenersTab() {
   const [selectedRows, setSelectedRows] = useState<any>([]);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false); // Add modal state
   const handleListenerDetails = (listenerId: string) => {
-    router.push(
-      `${process.env.NEXT_PUBLIC_BASEURL}dashboard/listener/details/${listenerId}`
-    );
+    router.push(`/dashboard/listener/details/${listenerId}`);
   };
   const rows = ROWS.map((row) => ({
     ...row,

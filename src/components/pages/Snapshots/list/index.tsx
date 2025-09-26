@@ -67,9 +67,7 @@ const SnapshotList = () => {
     try {
       const snapshot = filteredSnapshots.find((snap) => snap.id === snapshotId);
       if (snapshot) {
-        router.push(
-          `${process.env.NEXT_PUBLIC_BASEURL}dashboard/snapshots/details/${snapshot.snapshotId}`
-        );
+        router.push(`/dashboard/snapshots/details/${snapshot.snapshotId}`);
       }
     } catch (error) {
       console.log("View button clicked with ID:", snapshotId);
@@ -205,7 +203,6 @@ const SnapshotList = () => {
     <div className="space-y-6 border border-themeGray-400 rounded-[20px] p-6">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold text-themeGray-900">Snapshots</h1>
-        
       </div>
 
       <div className="flex items-center justify-between gap-4">

@@ -20,7 +20,7 @@ const SecurityGroupList = () => {
   const [searchValue, setSearchValue] = useState("");
   const [selectedRows, setSelectedRows] = useState<string[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+
   const filteredSecurityGroups = securityGroupData.filter(
     (sg) =>
       sg.name.toLowerCase().includes(searchValue.toLowerCase()) ||
@@ -49,7 +49,7 @@ const SecurityGroupList = () => {
       );
       if (securityGroup) {
         router.push(
-          `${process.env.NEXT_PUBLIC_BASEURL}dashboard/securitygroup/details/${securityGroup.securityGroupId}`
+          `/dashboard/securitygroup/details/${securityGroup.securityGroupId}`
         );
       }
     } catch (error) {

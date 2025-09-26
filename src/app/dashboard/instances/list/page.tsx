@@ -143,7 +143,7 @@ function InstanceListing() {
   };
 
   const handleDetailsNavigation = (id: string) => {
-    push(`${process.env.NEXT_PUBLIC_BASEURL}dashboard/instances/details/${id}`);
+    push(`/dashboard/instances/details/${id}`);
   };
 
   useEffect(() => {
@@ -172,11 +172,7 @@ function InstanceListing() {
         <h1 className="text-[32px] leading-[21px] font-medium">
           All Running Compute Instances
         </h1>
-        <Button
-          onClick={() =>
-            push(`${process.env.NEXT_PUBLIC_BASEURL}dashboard/instance`)
-          }
-        >
+        <Button onClick={() => push(`/dashboard/instance`)}>
           Create New Instance
         </Button>
       </div>

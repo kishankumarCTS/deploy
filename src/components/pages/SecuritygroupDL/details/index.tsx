@@ -50,15 +50,15 @@ const SecurityGroupDetails = ({
         rule.portRange.toLowerCase().includes(searchValue.toLowerCase()))
   );
 
-// Unified handler for rule details based on direction
-const handleRuleDetails = (rule: SecurityGroupRuleType) => {
-  const route =
-    rule.direction === "inbound"
-      ? `${process.env.NEXT_PUBLIC_BASEURL}dashboard/inbound/details/${rule.ruleId}`
-      : `${process.env.NEXT_PUBLIC_BASEURL}dashboard/outbound/details/${rule.ruleId}`;
+  // Unified handler for rule details based on direction
+  const handleRuleDetails = (rule: SecurityGroupRuleType) => {
+    const route =
+      rule.direction === "inbound"
+        ? `/dashboard/inbound/details/${rule.ruleId}`
+        : `/dashboard/outbound/details/${rule.ruleId}`;
 
-  router.push(route);
-};
+    router.push(route);
+  };
 
   const filteredOutboundRules = securityGroupRulesData.filter(
     (rule) =>
@@ -204,7 +204,7 @@ const handleRuleDetails = (rule: SecurityGroupRuleType) => {
 
   const inboundRuleRows = filteredInboundRules.map((rule) => ({
     ...rule,
-    id:rule.ruleId,
+    id: rule.ruleId,
     select: (
       <Checkbox
         checked={selectedInboundRules.includes(rule.id)}
@@ -275,10 +275,10 @@ const handleRuleDetails = (rule: SecurityGroupRuleType) => {
           ]}
           mainAction={{
             children: "View Inbound Details",
-             onClick: (rowId: string) => {
-      const rule = inboundRuleRows.find((r) => r.id === rowId);
-      if (rule) handleRuleDetails(rule);
-    },
+            onClick: (rowId: string) => {
+              const rule = inboundRuleRows.find((r) => r.id === rowId);
+              if (rule) handleRuleDetails(rule);
+            },
           }}
         />
         <div className="bg-themeWhite-900 py-3 px-6 rounded-b-[20px]">
@@ -326,10 +326,10 @@ const handleRuleDetails = (rule: SecurityGroupRuleType) => {
           ]}
           mainAction={{
             children: "View Outbound Details",
-             onClick: (rowId: string) => {
-      const rule = outboundRuleRows.find((r) => r.id === rowId);
-      if (rule) handleRuleDetails(rule);
-    },
+            onClick: (rowId: string) => {
+              const rule = outboundRuleRows.find((r) => r.id === rowId);
+              if (rule) handleRuleDetails(rule);
+            },
           }}
         />
         <div className="bg-themeWhite-900 py-3 px-6 rounded-b-[20px]">
